@@ -91,7 +91,6 @@
     }
     .developer {
       margin-top: 20px;
-      color: #9df3c4;
       font-size: 0.9em;
     }
     .social-icons {
@@ -147,6 +146,34 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 40px;
+      align-items: center;
+    }
+    .gallery img {
+      width: 90%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .glow {
+      color: #9df3c4;
+      text-shadow: 0 0 5px #33ffc1, 0 0 10px #33ffc1, 0 0 20px #33ffc1;
+      animation: glowAnim 1.5s ease-in-out infinite alternate;
+      font-weight: bold;
+    }
+    @keyframes glowAnim {
+      from {
+        text-shadow: 0 0 5px #33ffc1, 0 0 10px #33ffc1, 0 0 20px #33ffc1;
+      }
+      to {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+      }
     }
   </style>
   <script>
@@ -211,6 +238,17 @@
       <div class="animated-text" id="animatedText">Jiunge kwenye group letu la WhatsApp</div>
       <p><a href="https://chat.whatsapp.com/FK1c6PGgbJ56nXW5UmWWq5" target="_blank" style="font-weight:bold; color:#013220; text-decoration:underline;">Bonyeza hapa kujiunga</a></p>
     </div>
+
+    <div class="gallery">
+      <img src="1.jpg" alt="Image 1">
+      <img src="2.jpg" alt="Image 2">
+      <img src="3.jpg" alt="Image 3">
+      <img src="4.jpg" alt="Image 4">
+      <img src="5.jpg" alt="Image 5">
+      <img src="6.jpg" alt="Image 6">
+      <img src="7.jpg" alt="Image 7">
+      <img src="8.jpg" alt="Image 8">
+    </div>
   </section>
 
   <section class="section" id="about">
@@ -242,7 +280,10 @@
       <a href="https://www.tiktok.com/@dr.chrissenge_?_t=ZM-8wEavz1vGmz&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
     <p>&copy; 2025 TANDC - Tetea Afya Yako</p>
-    <div class="developer">Development and Creative Design by MATO MEDIA TZ</div>
+    <div class="developer">
+      Development and Creative Design by 
+      <a href="https://www.instagram.com/matomediatz?igsh=dHZtNW9qZm5tZmZ5" target="_blank" class="glow">MATO MEDIA TZ</a>
+    </div>
   </footer>
 
   <div class="whatsapp-chat">
