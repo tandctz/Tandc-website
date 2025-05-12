@@ -92,6 +92,16 @@
     .developer {
       margin-top: 20px;
       font-size: 0.9em;
+      animation: blink 1s infinite;
+    }
+    .developer a {
+      color: #9df3c4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
     .social-icons {
       margin-top: 10px;
@@ -161,48 +171,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .glow {
-      color: #9df3c4;
-      text-shadow: 0 0 5px #33ffc1, 0 0 10px #33ffc1, 0 0 20px #33ffc1;
-      animation: glowAnim 1.5s ease-in-out infinite alternate;
-      font-weight: bold;
-    }
-    @keyframes glowAnim {
-      from {
-        text-shadow: 0 0 5px #33ffc1, 0 0 10px #33ffc1, 0 0 20px #33ffc1;
-      }
-      to {
-        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
-      }
-    }
   </style>
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll(".section");
-      sections.forEach(section => section.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      document.querySelector(".hero").style.display = id === "home" ? "flex" : "none";
-    }
-
-    window.onload = () => {
-      showSection("home");
-      const hero = document.querySelector(".hero");
-      const images = ["y1.jpg", "y2.jpg", "y3.jpg"];
-      let current = 0;
-      setInterval(() => {
-        current = (current + 1) % images.length;
-        hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[current]}')`;
-      }, 5000);
-
-      const textElement = document.getElementById("animatedText");
-      const texts = ["Jiunge kwenye group letu la WhatsApp", "Pata ushauri wa kiafya", "Elimu ya afya kila siku", "Huduma bora kwa wakati"];
-      let index = 0;
-      setInterval(() => {
-        textElement.innerText = texts[index];
-        index = (index + 1) % texts.length;
-      }, 3000);
-    };
-  </script>
 </head>
 <body>
   <header>
@@ -214,6 +183,10 @@
     <a onclick="showSection('about')">Kuhusu</a>
     <a onclick="showSection('services')">Huduma</a>
     <a onclick="showSection('contact')">Mawasiliano</a>
+    <select id="languageSwitcher" onchange="switchLanguage()" style="background:#026e57; color:white; border:none; font-weight:bold;">
+      <option value="sw">Swahili</option>
+      <option value="en">English</option>
+    </select>
   </nav>
   <div class="hero">
     <h2>Afya Yako Kwanza</h2>
@@ -222,7 +195,6 @@
   <section class="section" id="home">
     <h2>Karibu TANDC</h2>
     <p>Karibu kwenye Tetea Afya Yako na Daktari Consultation Services, taasisi inayojali afya yako kwa kutoa huduma bora, salama na kwa wakati kupitia ushauri wa kitaalamu wa kiafya.</p>
-
     <div class="team">
       <img src="mtu.jpg" alt="Dr. Christopher Senge" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid #026e57; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
       <div class="description">
@@ -232,13 +204,11 @@
         focus on improving and promoting patients and clients overall health.
       </div>
     </div>
-
     <div class="join-group">
       <img src="group.jpg" alt="Group WhatsApp">
       <div class="animated-text" id="animatedText">Jiunge kwenye group letu la WhatsApp</div>
       <p><a href="https://chat.whatsapp.com/FK1c6PGgbJ56nXW5UmWWq5" target="_blank" style="font-weight:bold; color:#013220; text-decoration:underline;">Bonyeza hapa kujiunga</a></p>
     </div>
-
     <div class="gallery">
       <img src="1.jpg" alt="Image 1">
       <img src="2.jpg" alt="Image 2">
@@ -281,8 +251,7 @@
     </div>
     <p>&copy; 2025 TANDC - Tetea Afya Yako</p>
     <div class="developer">
-      Development and Creative Design by 
-      <a href="https://www.instagram.com/matomediatz?igsh=dHZtNW9qZm5tZmZ5" target="_blank" class="glow">MATO MEDIA TZ</a>
+      <a href="https://www.instagram.com/matomediatz?igsh=dHZtNW9qZm5tZmZ5" target="_blank">Development and Creative Design by MATO MEDIA TZ</a>
     </div>
   </footer>
 
@@ -291,5 +260,59 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat with us">
     </a>
   </div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll(".section");
+      sections.forEach(section => section.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      document.querySelector(".hero").style.display = id === "home" ? "flex" : "none";
+    }
+
+    window.onload = () => {
+      showSection("home");
+      const hero = document.querySelector(".hero");
+      const images = ["y1.jpg", "y2.jpg", "y3.jpg"];
+      let current = 0;
+      setInterval(() => {
+        current = (current + 1) % images.length;
+        hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[current]}')`;
+      }, 5000);
+
+      const textElement = document.getElementById("animatedText");
+      const texts = ["Jiunge kwenye group letu la WhatsApp", "Pata ushauri wa kiafya", "Elimu ya afya kila siku", "Huduma bora kwa wakati"];
+      let index = 0;
+      setInterval(() => {
+        textElement.innerText = texts[index];
+        index = (index + 1) % texts.length;
+      }, 3000);
+    };
+
+    const translations = {
+      sw: {
+        home: "Nyumbani",
+        about: "Kuhusu",
+        services: "Huduma",
+        contact: "Mawasiliano"
+      },
+      en: {
+        home: "Home",
+        about: "About",
+        services: "Services",
+        contact: "Contact"
+      }
+    };
+
+    function switchLanguage() {
+      const lang = document.getElementById("languageSwitcher").value;
+      const t = translations[lang];
+      const navLinks = document.querySelectorAll("nav a");
+
+      navLinks[0].innerText = t.home;
+      navLinks[1].innerText = t.about;
+      navLinks[2].innerText = t.services;
+      navLinks[3].innerText = t.contact;
+    }
+  </script>
 </body>
 </html>
